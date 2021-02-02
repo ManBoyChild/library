@@ -1,0 +1,45 @@
+:root {
+    --main-color: #f0f0f0;
+}
+
+/* BODY AND TITLE STYLING */
+body {
+    background-image: url(Library.jpg);
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    color: var(--main-color);
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    padding: 2rem 0 4rem 0;
+}
+
+/* BUTTON AND FORM STYLING */
+.addBook {
+    border-radius: 10px;
+    border: none;
+    background-color: var(--main-color);
+    font-size: 1rem;
+    outline: none;
+    padding: 1rem 2rem;
+    transition: 0.3s ease-in-out;
+}
+
+.addBook:hover {
+    background-color: #d4d4d4;
+}
+
+.bookForm {
+    display: none;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
