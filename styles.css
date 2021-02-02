@@ -5,6 +5,7 @@
 /* BODY AND TITLE STYLING */
 body {
     background-image: url(Library.jpg);
+    background-attachment: fixed;
     background-position: center;
     background-size: cover;
     box-sizing: border-box;
