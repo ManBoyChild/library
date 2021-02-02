@@ -14,9 +14,11 @@ addBookBtn.addEventListener("click", toogleForm);
 
 function toogleForm() {
     let bookForm = document.querySelector(".bookForm");
-    console.log(bookForm);
     if (bookForm.style.display === "none") {
-        bookForm.style.display = "block";
+        bookForm.style.display = "flex";
+        bookForm.style.flexDirection = "column";
+        bookForm.style.justifyContent = "space-between";
+        bookForm.style.alignItems = "center";
     } else {
         bookForm.style.display = "none";
     }
