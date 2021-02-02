@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 :root {
     --main-color: #f0f0f0;
 }
@@ -10,12 +12,13 @@ body {
     background-size: cover;
     box-sizing: border-box;
     color: var(--main-color);
-    font-family: sans-serif;
+    font-family: 'Pacifico', cursive;
 }
 
 h1 {
-    text-align: center;
     font-size: 4rem;
+    text-align: center;
+    text-shadow: 2px 2px #d4d4d4;
     padding: 2rem 0 4rem 0;
 }
 
@@ -24,9 +27,11 @@ h1 {
     border-radius: 10px;
     border: none;
     background-color: var(--main-color);
+    font-family: 'Pacifico', cursive;
     font-size: 1rem;
     outline: none;
     padding: 1rem 2rem;
+    margin: 2rem 0;
     transition: 0.3s ease-in-out;
 }
 
@@ -35,7 +40,19 @@ h1 {
 }
 
 .bookForm {
+    background-color: var(--main-color);
+    border-radius: 10px;
+    color: black;
     display: none;
+    padding: 1.5rem;
+    height: 300px;
+    width: 500px;
+}
+
+.bookForm input {
+    outline: none;
+    width: 400px;
+    font-size: 1.5rem;
 }
 
 .formContainer {
