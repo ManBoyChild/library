@@ -37,28 +37,5 @@ h1 {
 }
 
 .addBook:hover {
-    background-color: #d4d4d4;
-}
-
-.bookForm {
-    background-color: var(--main-color);
-    border-radius: 10px;
-    color: black;
-    display: none;
-    padding: 1.5rem;
-    height: 300px;
-    width: 500px;
-}
-
-.bookForm input {
-    outline: none;
-    width: 400px;
-    font-size: 1.5rem;
-}
-
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: coral;
 }
