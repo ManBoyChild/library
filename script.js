@@ -11,11 +11,11 @@ function Book(title, author, pages, status) {
 const modal = document.getElementsByClassName("modal")[0];
 const addBookBtn = document.querySelector(".addBook");
 const closeBtn = document.querySelector(".closeBtn");
+const submitBtn = document.querySelector(".submit");
 
 addBookBtn.addEventListener("click", openModal);
-
 closeBtn.addEventListener ("click", closeModal);
-
+submitBtn.addEventListener("click", closeModal);
 window.addEventListener("click", windowClick);
 
 function openModal() {
