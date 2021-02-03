@@ -23,6 +23,12 @@ h1 {
     padding: 2rem 0 4rem 0;
 }
 
+/* FORM CONTAINER LAYOUT */
+.formContainer {
+    display: flex;
+    align-items: center;
+}
+
 /* BUTTON STYLING */
 .addBook {
     border-radius: 10px;
