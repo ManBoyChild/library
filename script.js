@@ -7,19 +7,27 @@ function Book(title, author, pages, status) {
     this. status = status;
 }
 
-//ADD BOOK BUTTON
+// MODAL FUNCTIONALITY
+const modal = document.getElementsByClassName("modal")[0];
 const addBookBtn = document.querySelector(".addBook");
-console.log(addBookBtn);
-addBookBtn.addEventListener("click", toogleForm);
+const closeBtn = document.querySelector(".closeBtn");
 
-function toogleForm() {
-    let bookForm = document.querySelector(".bookForm");
-    if (bookForm.style.display === "none") {
-        bookForm.style.display = "flex";
-        bookForm.style.flexDirection = "column";
-        bookForm.style.justifyContent = "space-between";
-        bookForm.style.alignItems = "center";
-    } else {
-        bookForm.style.display = "none";
+addBookBtn.addEventListener("click", openModal);
+
+closeBtn.addEventListener ("click", closeModal);
+
+window.addEventListener("click", windowClick);
+
+function openModal() {
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function windowClick(e) {
+    if (e.target == modal) {
+        modal.style.display = "none";
     }
 }
