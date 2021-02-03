@@ -1,4 +1,4 @@
-/* FONT AND VARIABLE DEFINITIONS*/
+/* FONT AND VARIABLE DEFINITIONS */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 :root {
@@ -23,7 +23,7 @@ h1 {
     padding: 2rem 0 4rem 0;
 }
 
-/* BUTTON AND FORM STYLING */
+/* BUTTON STYLING */
 .addBook {
     border-radius: 10px;
     border: none;
@@ -32,10 +32,45 @@ h1 {
     font-size: 1rem;
     outline: none;
     padding: 1rem 2rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
     transition: 0.3s ease-in-out;
 }
 
 .addBook:hover {
     background-color: coral;
+}
+
+/* MODAL STYLING */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+}
+
+.content {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--main-color);
+    width: 100%;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+}
+
+/* MODAL ANIMATIONS */
+@keyframes slideIn {
+    from{bottom: -300px; opacity: 0;}
+    to{bottom: 0; opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
