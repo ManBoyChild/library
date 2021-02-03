@@ -63,7 +63,7 @@ h1 {
     background-color: #fff;
     opacity: 0.9;
     width: 100%;
-    height: 400px;
+    height: 500px;
     animation-name: slideIn;
     animation-duration: 0.4s;
 }
@@ -102,4 +102,67 @@ h1 {
 
 .closeBtn:hover, .closeBtn:focus {
     color: #000;
+}
+
+/* MODAL FORM STYLING */
+.bookForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    color: black;
+    height: 70%;
+}
+
+.bookForm label {
+    font-size: 1.5rem;
+}
+
+.bookForm input[type=text] {
+    width: 40%;
+    height: 20px;
+    border: 1px solid coral;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* MODUAL TOOGLE STYLING */
+.switch {
+    position: relative;
+    display: block;
+    width: 80px;
+    height: 40px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: coral;
+    border-radius: 30px;
+    transition: 0.4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    background-color: rgb(117, 55, 55);
+    transition: 0.4s;
+}
+
+input:checked + .slider::before {
+    transform: translateX(40px);
+    background-color: rgb(66, 129, 66);
 }
