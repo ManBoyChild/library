@@ -9,26 +9,41 @@ function Book(title, author, pages, status) {
 }
 
 //ADD BOOK TO LIBRARY ARRAY
-function addBookToLibrary(); {
+const submitBtn = document.querySelector(".submit");
+submitBtn.addEventListener("click", addBookToLibrary);
+
+function addBookToLibrary() {
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const pages = document.getElementById("pages");
     const hasRead = document.getElementById("read");
+    console.log(title, author, pages, hasRead);
 
     const newBook = Object.create(Book);
 
-    newBook.title = title.innerText;
-    newBook.author = author.innerText;
-    newBook.pages = pages.innerText;
-    newBook.status = hasRead.checked;
+    if (title.value === "" || author.value === "" || pages.value === "") {
+        alert("Pleaes fill in all the values before adding a new book to your libray");
+    } else if (isNaN(pages.value)){ 
+        alert("Please only use nubmers for the pages value.");
+    } else {
+        newBook.title = title.value;
+        newBook.author = author.value;
+        newBook.pages = pages.value;
+        newBook.status = hasRead.checked;
+    }
 
+    myLibrary.push(newBook);
+
+    title.value = "";
+    author.value = "";
+    pages.value = ""
+    hasRead.checked = false;
 }
 
 // MODAL FUNCTIONALITY
 const modal = document.getElementsByClassName("modal")[0];
 const addBookBtn = document.querySelector(".addBook");
 const closeBtn = document.querySelector(".closeBtn");
-const submitBtn = document.querySelector(".submit");
 
 addBookBtn.addEventListener("click", openModal);
 closeBtn.addEventListener ("click", closeModal);
