@@ -1,11 +1,18 @@
-let myLibrary = [];
+let myLibrary = [
+    {
+        title: "Lord of the Rings",
+        author: "Tolkin",
+        pages: 400,
+        status: true
+    }
+];
 
 //BOOK CONSTRUCTOR
 function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this. status = status;
+    this.status = status;
 }
 
 //ADD BOOK TO LIBRARY ARRAY
