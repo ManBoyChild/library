@@ -1,7 +1,7 @@
 /* FONT DEFINITION */
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-/* BODY AND TITLE STYLING */
+/* BODY, H1, AND H2 STYLING */
 body {
     background-image: url(Library.jpg);
     background-attachment: fixed;
@@ -15,6 +15,13 @@ body {
 
 h1 {
     font-size: 4rem;
+    text-align: center;
+    text-shadow: 2px 2px coral;
+    padding: 2rem 0 4rem 0;
+}
+
+h2 {
+    font-size: 2rem;
     text-align: center;
     text-shadow: 2px 2px coral;
     padding: 2rem 0 4rem 0;
