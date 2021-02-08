@@ -10,7 +10,14 @@ let myLibrary = [
         title: "Harry Potter",
         author: "J. K. Rowling",
         pages: 200,
-        status: true
+        status: false
+    },
+
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 200,
+        status: false
     }
 ];
 
@@ -84,6 +91,24 @@ function addBookToDisplay(libArray) {
     checkbox.type = "checkbox";
     slider.classList.add("slider");
 
+    // libArray.forEach((book, index) => {
+    //     bookDisplay.append(bookContainer);
+    //     bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
+    //     bookHasRead.append(read, switchBtn);
+    //     switchBtn.append(checkbox, slider);
+
+    //     bookContainer.setAttribute("data-id", index);
+    //     deleteBtn.innerHTML = "&times;"
+    //     bookTitle.innerText = book.title;
+    //     bookAuthor.innerText = "Author: " + book.author;
+    //     bookPages.innerText = "Pages: " + book.pages;
+    //     read.innerText = "Have read book:"
+    //     if(book.status == true) {
+    //         checkbox.checked = true;
+    //     } else {
+    //         checkbox.checked = false;
+    //     }
+    // });
 
     for(let i = 0; i < libArray.length; i++) {
         bookDisplay.append(bookContainer);
@@ -91,7 +116,7 @@ function addBookToDisplay(libArray) {
         bookHasRead.append(read, switchBtn);
         switchBtn.append(checkbox, slider);
 
-        bookContainer.setAttribute("data-ID", i);
+        bookContainer.setAttribute("data-id", i);
         deleteBtn.innerHTML = "&times;"
         bookTitle.innerText = libArray[i].title;
         bookAuthor.innerText = "Author: " + libArray[i].author;
