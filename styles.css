@@ -211,6 +211,7 @@ input:checked + .slider::before {
 
 .bookTitle {
     grid-column: 1/3;
+    font-size: 2rem;
     color: coral;
 }
 
@@ -226,11 +227,11 @@ input:checked + .slider::before {
     color: #000;
 }
 
-.bookPages {
+.bookPages, .bookHasRead {
     justify-self: center;
+    font-size: 1.5rem;
 }
 
-.bookHasRead {
-    justify-self: center;
+.bookAuthor {
+    font-size: 1.5rem;
 }
-
