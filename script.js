@@ -4,6 +4,20 @@ let myLibrary = [
         author: "Tolkin",
         pages: 400,
         status: true
+    },
+
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 200,
+        status: false
+    },
+
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 200,
+        status: false
     }
 ];
 
@@ -47,7 +61,76 @@ function addBookToLibrary() {
     hasRead.checked = false;
 }
 
-// MODAL FUNCTIONALITY
+//ITERATIVE FUNCTION ADDING BOOKS TO LIBRARY DISPLAY
+const bookDisplay = document.querySelector(".bookDisplay");
+
+function addBookToDisplay(libArray) {
+    const bookContainer = document.createElement("div");
+    bookContainer.classList.add("bookContainer");
+
+    const bookTitle = document.createElement("div");
+    bookTitle.classList.add("bookTitle");
+
+    const deleteBtn = document.createElement("span");
+    deleteBtn.classList.add("deleteBtn");
+
+    const bookAuthor = document.createElement("div");
+    bookAuthor.classList.add("bookAuthor");
+
+    const bookPages = document.createElement("div");
+    bookPages.classList.add("bookPages");
+
+    const bookHasRead = document.createElement("div");
+    const read = document.createElement("label");
+    const switchBtn = document.createElement("label");
+    const checkbox = document.createElement("input");
+    const slider = document.createElement("span");
+
+    bookHasRead.classList.add("bookHasRead");
+    switchBtn.classList.add("switch");
+    checkbox.type = "checkbox";
+    slider.classList.add("slider");
+
+    // libArray.forEach((book, index) => {
+    //     bookDisplay.append(bookContainer);
+    //     bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
+    //     bookHasRead.append(read, switchBtn);
+    //     switchBtn.append(checkbox, slider);
+
+    //     bookContainer.setAttribute("data-id", index);
+    //     deleteBtn.innerHTML = "&times;"
+    //     bookTitle.innerText = book.title;
+    //     bookAuthor.innerText = "Author: " + book.author;
+    //     bookPages.innerText = "Pages: " + book.pages;
+    //     read.innerText = "Have read book:"
+    //     if(book.status == true) {
+    //         checkbox.checked = true;
+    //     } else {
+    //         checkbox.checked = false;
+    //     }
+    // });
+
+    for(let i = 0; i < libArray.length; i++) {
+        bookDisplay.append(bookContainer);
+        bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
+        bookHasRead.append(read, switchBtn);
+        switchBtn.append(checkbox, slider);
+
+        bookContainer.setAttribute("data-id", i);
+        deleteBtn.innerHTML = "&times;"
+        bookTitle.innerText = libArray[i].title;
+        bookAuthor.innerText = "Author: " + libArray[i].author;
+        bookPages.innerText = "Pages: " + libArray[i].pages;
+        read.innerText = "Have read book:"
+        if(libArray[i].status == true) {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false;
+        }
+    }
+}
+
+//MODAL FUNCTIONALITY
 const modal = document.getElementsByClassName("modal")[0];
 const addBookBtn = document.querySelector(".addBook");
 const closeBtn = document.querySelector(".closeBtn");
