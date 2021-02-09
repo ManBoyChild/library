@@ -65,6 +65,7 @@ function addBookToLibrary() {
 const bookDisplay = document.querySelector(".bookDisplay");
 
 function addBookToDisplay(libArray) {
+    //DECLARING ALL THE DIFFERENT HTML ELEMENTS AND CLASSES
     const bookContainer = document.createElement("div");
     bookContainer.classList.add("bookContainer");
 
@@ -91,42 +92,25 @@ function addBookToDisplay(libArray) {
     checkbox.type = "checkbox";
     slider.classList.add("slider");
 
-    // libArray.forEach((book, index) => {
-    //     bookDisplay.append(bookContainer);
-    //     bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
-    //     bookHasRead.append(read, switchBtn);
-    //     switchBtn.append(checkbox, slider);
+    //ADDS LAST BOOK FROM THE ARRAY
+    let last = libArray.length - 1;
+    let index = 0;
+    bookDisplay.append(bookContainer);
+    bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
+    bookHasRead.append(read, switchBtn);
+    switchBtn.append(checkbox, slider);
 
-    //     bookContainer.setAttribute("data-id", index);
-    //     deleteBtn.innerHTML = "&times;"
-    //     bookTitle.innerText = book.title;
-    //     bookAuthor.innerText = "Author: " + book.author;
-    //     bookPages.innerText = "Pages: " + book.pages;
-    //     read.innerText = "Have read book:"
-    //     if(book.status == true) {
-    //         checkbox.checked = true;
-    //     } else {
-    //         checkbox.checked = false;
-    //     }
-    // });
-
-    for(let i = 0; i < libArray.length; i++) {
-        bookDisplay.append(bookContainer);
-        bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
-        bookHasRead.append(read, switchBtn);
-        switchBtn.append(checkbox, slider);
-
-        bookContainer.setAttribute("data-id", i);
-        deleteBtn.innerHTML = "&times;"
-        bookTitle.innerText = libArray[i].title;
-        bookAuthor.innerText = "Author: " + libArray[i].author;
-        bookPages.innerText = "Pages: " + libArray[i].pages;
-        read.innerText = "Have read book:"
-        if(libArray[i].status == true) {
-            checkbox.checked = true;
-        } else {
-            checkbox.checked = false;
-        }
+    bookContainer.setAttribute("data-id", index);
+    index++;
+    deleteBtn.innerHTML = "&times;"
+    bookTitle.innerText = libArray[last].title;
+    bookAuthor.innerText = "Author: " + libArray[last].author;
+    bookPages.innerText = "Pages: " + libArray[last].pages;
+    read.innerText = "Have read book:"
+    if(libArray[last].status == true) {
+        checkbox.checked = true;
+    } else {
+        checkbox.checked = false;
     }
 }
 
