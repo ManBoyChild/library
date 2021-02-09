@@ -59,10 +59,13 @@ function addBookToLibrary() {
     author.value = "";
     pages.value = ""
     hasRead.checked = false;
+
+    addBookToDisplay(myLibrary);
 }
 
 //ITERATIVE FUNCTION ADDING BOOKS TO LIBRARY DISPLAY
 const bookDisplay = document.querySelector(".bookDisplay");
+let arrayIndex = 0;
 
 function addBookToDisplay(libArray) {
     //DECLARING ALL THE DIFFERENT HTML ELEMENTS AND CLASSES
@@ -90,18 +93,17 @@ function addBookToDisplay(libArray) {
     bookHasRead.classList.add("bookHasRead");
     switchBtn.classList.add("switch");
     checkbox.type = "checkbox";
-    slider.classList.add("slider");
+    slider.classList.add("sliderDisplay");
 
     //ADDS LAST BOOK FROM THE ARRAY
     let last = libArray.length - 1;
-    let index = 0;
     bookDisplay.append(bookContainer);
     bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
     bookHasRead.append(read, switchBtn);
     switchBtn.append(checkbox, slider);
 
-    bookContainer.setAttribute("data-id", index);
-    index++;
+    bookContainer.setAttribute("data-id", arrayIndex);
+    arrayIndex += 1;
     deleteBtn.innerHTML = "&times;"
     bookTitle.innerText = libArray[last].title;
     bookAuthor.innerText = "Author: " + libArray[last].author;
@@ -112,6 +114,11 @@ function addBookToDisplay(libArray) {
     } else {
         checkbox.checked = false;
     }
+}
+
+
+Book.prototype.readStatus = function() {
+    
 }
 
 //MODAL FUNCTIONALITY
