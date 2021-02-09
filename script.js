@@ -1,25 +1,4 @@
-let myLibrary = [
-    {
-        title: "Lord of the Rings",
-        author: "Tolkin",
-        pages: 400,
-        status: true
-    },
-
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 200,
-        status: false
-    },
-
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 200,
-        status: false
-    }
-];
+let myLibrary = [];
 
 //BOOK CONSTRUCTOR
 function Book(title, author, pages, status) {
