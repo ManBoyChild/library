@@ -154,7 +154,7 @@ h2 {
     height: 0;
 }
 
-.slider {
+.slider, .sliderDisplay {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -166,7 +166,7 @@ h2 {
     transition: 0.4s;
 }
 
-.slider::before {
+.slider::before, .sliderDisplay::before {
     position: absolute;
     content: "";
     height: 32px;
@@ -178,11 +178,11 @@ h2 {
     transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked + .slider, input:checked + .sliderDisplay {
     background-color: coral;
 }
 
-input:checked + .slider::before {
+input:checked + .slider::before, input:checked + .sliderDisplay::before {
     transform: translateX(38px);
 }
 
