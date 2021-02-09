@@ -8,6 +8,14 @@ function Book(title, author, pages, status) {
     this.status = status;
 }
 
+Book.prototype.readStatus = function() {
+    if(this.status == true) {
+        this.status = false;
+    } else if (this.status == false) {
+        this.status = true;
+    }
+}
+
 //ADD BOOK TO LIBRARY ARRAY
 const submitBtn = document.querySelector(".submit");
 submitBtn.addEventListener("click", addBookToLibrary);
@@ -93,11 +101,20 @@ function addBookToDisplay(libArray) {
     } else {
         checkbox.checked = false;
     }
+    booksOnDisplay = document.querySelectorAll(".bookContainer");
+    booksOnDisplay.forEach(display => {
+        display.addEventListener("click", findObjectIndex)
+    });
 }
 
+//FINDING THE OBJECT'S WHCIH READ STATUS HAS BEEN CHANGED
+let booksOnDisplay = document.querySelectorAll(".bookContainer");
 
-Book.prototype.readStatus = function() {
-    
+function findObjectIndex (e) {
+    if(e.target && e.target.nodeName == "INPUT") {
+        let affectedObject = this.getAttribute("data-id");
+        myLibrary[affectedObject].readStatus();
+    }
 }
 
 //MODAL FUNCTIONALITY
