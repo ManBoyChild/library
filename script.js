@@ -1,25 +1,4 @@
-let myLibrary = [
-    {
-        title: "Lord of the Rings",
-        author: "Tolkin",
-        pages: 400,
-        status: true
-    },
-
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 200,
-        status: false
-    },
-
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 200,
-        status: false
-    }
-];
+let myLibrary = [];
 
 //BOOK CONSTRUCTOR
 function Book(title, author, pages, status) {
@@ -27,6 +6,14 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
+}
+
+Book.prototype.readStatus = function() {
+    if(this.status == true) {
+        this.status = false;
+    } else if (this.status == false) {
+        this.status = true;
+    }
 }
 
 //ADD BOOK TO LIBRARY ARRAY
@@ -59,12 +46,16 @@ function addBookToLibrary() {
     author.value = "";
     pages.value = ""
     hasRead.checked = false;
+
+    addBookToDisplay(myLibrary);
 }
 
 //ITERATIVE FUNCTION ADDING BOOKS TO LIBRARY DISPLAY
 const bookDisplay = document.querySelector(".bookDisplay");
+let arrayIndex = 0;
 
 function addBookToDisplay(libArray) {
+    //DECLARING ALL THE DIFFERENT HTML ELEMENTS AND CLASSES
     const bookContainer = document.createElement("div");
     bookContainer.classList.add("bookContainer");
 
@@ -89,44 +80,40 @@ function addBookToDisplay(libArray) {
     bookHasRead.classList.add("bookHasRead");
     switchBtn.classList.add("switch");
     checkbox.type = "checkbox";
-    slider.classList.add("slider");
+    slider.classList.add("sliderDisplay");
 
-    // libArray.forEach((book, index) => {
-    //     bookDisplay.append(bookContainer);
-    //     bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
-    //     bookHasRead.append(read, switchBtn);
-    //     switchBtn.append(checkbox, slider);
+    //ADDS LAST BOOK FROM THE ARRAY
+    let last = libArray.length - 1;
+    bookDisplay.append(bookContainer);
+    bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
+    bookHasRead.append(read, switchBtn);
+    switchBtn.append(checkbox, slider);
 
-    //     bookContainer.setAttribute("data-id", index);
-    //     deleteBtn.innerHTML = "&times;"
-    //     bookTitle.innerText = book.title;
-    //     bookAuthor.innerText = "Author: " + book.author;
-    //     bookPages.innerText = "Pages: " + book.pages;
-    //     read.innerText = "Have read book:"
-    //     if(book.status == true) {
-    //         checkbox.checked = true;
-    //     } else {
-    //         checkbox.checked = false;
-    //     }
-    // });
+    bookContainer.setAttribute("data-id", arrayIndex);
+    arrayIndex += 1;
+    deleteBtn.innerHTML = "&times;"
+    bookTitle.innerText = libArray[last].title;
+    bookAuthor.innerText = "Author: " + libArray[last].author;
+    bookPages.innerText = "Pages: " + libArray[last].pages;
+    read.innerText = "Have read book:"
+    if(libArray[last].status == true) {
+        checkbox.checked = true;
+    } else {
+        checkbox.checked = false;
+    }
+    booksOnDisplay = document.querySelectorAll(".bookContainer");
+    booksOnDisplay.forEach(display => {
+        display.addEventListener("click", findObjectIndex)
+    });
+}
 
-    for(let i = 0; i < libArray.length; i++) {
-        bookDisplay.append(bookContainer);
-        bookContainer.append(bookTitle, deleteBtn, bookAuthor, bookPages, bookHasRead);
-        bookHasRead.append(read, switchBtn);
-        switchBtn.append(checkbox, slider);
+//FINDING THE OBJECT'S WHCIH READ STATUS HAS BEEN CHANGED
+let booksOnDisplay = document.querySelectorAll(".bookContainer");
 
-        bookContainer.setAttribute("data-id", i);
-        deleteBtn.innerHTML = "&times;"
-        bookTitle.innerText = libArray[i].title;
-        bookAuthor.innerText = "Author: " + libArray[i].author;
-        bookPages.innerText = "Pages: " + libArray[i].pages;
-        read.innerText = "Have read book:"
-        if(libArray[i].status == true) {
-            checkbox.checked = true;
-        } else {
-            checkbox.checked = false;
-        }
+function findObjectIndex (e) {
+    if(e.target && e.target.nodeName == "INPUT") {
+        let affectedObject = this.getAttribute("data-id");
+        myLibrary[affectedObject].readStatus();
     }
 }
 
