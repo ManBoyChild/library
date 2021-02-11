@@ -26,7 +26,6 @@ function addBookToLibrary() {
     const author = document.getElementById("author");
     const pages = document.getElementById("pages");
     const hasRead = document.getElementById("read");
-    console.log(title, author, pages, hasRead);
 
     let newBook = new Book;
 
@@ -134,12 +133,18 @@ function deleteBookFromDisplay (e) {
     libArray.splice(deleteIndex, 1);
 
     let currentBooks = document.querySelectorAll(".bookContainer");
-    updateDisplayIndex(currentBooks);
-
-
+    updateDisplayIndex(currentBooks, deleteIndex);
 
     return myLibrary = libArray;
     
+}
+
+//UPDATING THE CURRENT BOOKS DATA ATTRIBUTE WHEN A BOOK IS DELETED
+function updateDisplayIndex(currentBookList, lastBookDeletedIndex) {
+    for (let i = lastBookDeletedIndex; i < currentBookList.length; i++) {
+        currentBookList[lastBookDeletedIndex].setAttribute("data-id", lastBookDeletedIndex);
+        lastBookDeletedIndex++;
+    }
 }
 
 //MODAL FUNCTIONALITY
