@@ -8,6 +8,7 @@ function Book(title, author, pages, status) {
     this.status = status;
 }
 
+//CHANGED THE ACTUAL READ STATUS OF SPECIFIC OBJECT WHEN TOOGLE SWITCH IS FLIPPED
 Book.prototype.readStatus = function() {
     if(this.status == true) {
         this.status = false;
@@ -101,20 +102,44 @@ function addBookToDisplay(libArray) {
     } else {
         checkbox.checked = false;
     }
-    booksOnDisplay = document.querySelectorAll(".bookContainer");
+
+    let booksOnDisplay = document.querySelectorAll(".bookContainer");
     booksOnDisplay.forEach(display => {
         display.addEventListener("click", findObjectIndex)
     });
+
+    let deleteBtnFnc = document.querySelectorAll(".deleteBtn");
+    deleteBtnFnc.forEach(button => {
+        button.addEventListener("click", deleteBookFromDisplay);
+    })
 }
 
 //FINDING THE OBJECT'S WHCIH READ STATUS HAS BEEN CHANGED
-let booksOnDisplay = document.querySelectorAll(".bookContainer");
-
 function findObjectIndex (e) {
     if(e.target && e.target.nodeName == "INPUT") {
         let affectedObject = this.getAttribute("data-id");
         myLibrary[affectedObject].readStatus();
     }
+}
+
+//LIBRARY DELETE BOOK FUNCTIONALITY
+let deleteIndex = 0;
+
+function deleteBookFromDisplay (e) {
+    let libArray = myLibrary;
+    let deletingBookDisplay = e.path[1];
+    deleteIndex = e.path[1].getAttribute("data-id");
+
+    deletingBookDisplay.remove();
+    libArray.splice(deleteIndex, 1);
+
+    let currentBooks = document.querySelectorAll(".bookContainer");
+    updateDisplayIndex(currentBooks);
+
+
+
+    return myLibrary = libArray;
+    
 }
 
 //MODAL FUNCTIONALITY
