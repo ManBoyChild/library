@@ -27,7 +27,7 @@ function addBookToLibrary() {
     const hasRead = document.getElementById("read");
     console.log(title, author, pages, hasRead);
 
-    const newBook = Object.create(Book);
+    let newBook = new Book;
 
     if (title.value === "" || author.value === "" || pages.value === "") {
         alert("Pleaes fill in all the values before adding a new book to your libray");
