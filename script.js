@@ -8,6 +8,7 @@ function Book(title, author, pages, status) {
     this.status = status;
 }
 
+//CHANGED THE ACTUAL READ STATUS OF SPECIFIC OBJECT WHEN TOOGLE SWITCH IS FLIPPED
 Book.prototype.readStatus = function() {
     if(this.status == true) {
         this.status = false;
@@ -25,9 +26,8 @@ function addBookToLibrary() {
     const author = document.getElementById("author");
     const pages = document.getElementById("pages");
     const hasRead = document.getElementById("read");
-    console.log(title, author, pages, hasRead);
 
-    const newBook = Object.create(Book);
+    let newBook = new Book;
 
     if (title.value === "" || author.value === "" || pages.value === "") {
         alert("Pleaes fill in all the values before adding a new book to your libray");
@@ -101,19 +101,49 @@ function addBookToDisplay(libArray) {
     } else {
         checkbox.checked = false;
     }
-    booksOnDisplay = document.querySelectorAll(".bookContainer");
+
+    let booksOnDisplay = document.querySelectorAll(".bookContainer");
     booksOnDisplay.forEach(display => {
         display.addEventListener("click", findObjectIndex)
     });
+
+    let deleteBtnFnc = document.querySelectorAll(".deleteBtn");
+    deleteBtnFnc.forEach(button => {
+        button.addEventListener("click", deleteBookFromDisplay);
+    })
 }
 
 //FINDING THE OBJECT'S WHCIH READ STATUS HAS BEEN CHANGED
-let booksOnDisplay = document.querySelectorAll(".bookContainer");
-
 function findObjectIndex (e) {
     if(e.target && e.target.nodeName == "INPUT") {
         let affectedObject = this.getAttribute("data-id");
         myLibrary[affectedObject].readStatus();
+    }
+}
+
+//LIBRARY DELETE BOOK FUNCTIONALITY
+let deleteIndex = 0;
+
+function deleteBookFromDisplay (e) {
+    let libArray = myLibrary;
+    let deletingBookDisplay = e.path[1];
+    deleteIndex = e.path[1].getAttribute("data-id");
+
+    deletingBookDisplay.remove();
+    libArray.splice(deleteIndex, 1);
+
+    let currentBooks = document.querySelectorAll(".bookContainer");
+    updateDisplayIndex(currentBooks, deleteIndex);
+
+    return myLibrary = libArray;
+    
+}
+
+//UPDATING THE CURRENT BOOKS DATA ATTRIBUTE WHEN A BOOK IS DELETED
+function updateDisplayIndex(currentBookList, lastBookDeletedIndex) {
+    for (let i = lastBookDeletedIndex; i < currentBookList.length; i++) {
+        currentBookList[lastBookDeletedIndex].setAttribute("data-id", lastBookDeletedIndex);
+        lastBookDeletedIndex++;
     }
 }
 
