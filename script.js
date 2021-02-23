@@ -41,7 +41,6 @@ function addBookToLibrary() {
     }
 
     myLibrary.push(newBook);
-    localStorage.setItem("myLibraryList", JSON.stringify(myLibrary));
 
     title.value = "";
     author.value = "";
