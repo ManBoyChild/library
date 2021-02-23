@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCECYNqDI6AVYncDugTaBfZtZZPJEkWbPE",
+            authDomain: "library-5b49a.firebaseapp.com",
+            projectId: "library-5b49a",
+            storageBucket: "library-5b49a.appspot.com",
+            messagingSenderId: "79044829238",
+            appId: "1:79044829238:web:44ef209d4d8e6a9ea8b897"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script src="script.js" defer></script>
+
     <title>Virtual Library</title>
 </head>
 <body>
